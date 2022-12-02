@@ -42,6 +42,8 @@ class CustomUserManager(BaseUserManager):
 
 
 class Accounts(AbstractUser):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     email = models.EmailField(('email address'), unique=True)
     phone_regex = RegexValidator(regex=r'^(?:\+88|88)?(01[3-9]\d{8})$', message="Phone number must be entered in the format: '+8801XXXXXX'. Up to 14 digits allowed.")
     mobile_number = models.CharField(validators=[phone_regex], max_length=20, unique=True,null=True,blank=True)
